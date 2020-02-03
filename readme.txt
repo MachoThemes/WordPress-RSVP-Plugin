@@ -100,6 +100,9 @@ For example if you have a page that is /rsvp for domain example.com your URL mig
 
 == Changelog ==
 
+= 2.7.2 =
+* Updated escaping and sanitization
+
 = 2.7.1 =
 * Fixed a problem where the "add new" custom questions change in 2.7.0 broke more of the functionality in the custom questions area.
 * Updated German translation courtesy of Stefan Profanter.
