@@ -90,6 +90,9 @@ if ( isset( $_GET['page'] ) && ( 'rsvp-upgrade-to-pro' === strtolower( $_GET['pa
 	add_action( 'init', 'rsvp_upgrade_to_pro' );
 }
 
+if ( is_admin() ) {
+	include 'class-rsvp-review.php';
+}
 require_once 'external-libs/wp-simple-nonce/wp-simple-nonce.php';
 require_once 'rsvp_frontend.inc.php';
 
@@ -500,12 +503,12 @@ function rsvp_admin_guestlist() {
 					<th scope="col" class="manage-column column-cb check-column" style=""><input type="checkbox" id="cb" /></th>
 					<th scope="col" id="attendeeName" class="manage-column column-title" style=""><?php echo esc_html__( 'Attendee', 'rsvp-plugin' ); ?><br />
 						<a href="( admin.php?page=rsvp-top-level&amp;sort=attendee&amp;sortDirection=asc)">
-							<img src="<?php echo plugins_url(); ?>/rsvp/uparrow<?php
+							<img src="<?php echo plugins_url(); ?>/rsvp/aseets/icons/uparrow<?php
 													echo( ( ( $sort == 'attendee' ) && ( $sortDirection == 'asc' ) ) ? '_selected' : '' );
 													?>.gif" width="11" height="9"
 								alt="<?php echo esc_attr__('Sort Ascending Attendee Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Ascending Attendee Status', 'rsvp-plugin'); ?>" border="0"></a> &nbsp;
 						<a href="admin.php?page=rsvp-top-level&amp;sort=attendee&amp;sortDirection=desc">
-							<img src="<?php echo plugins_url(); ?>/rsvp/downarrow<?php
+							<img src="<?php echo plugins_url(); ?>/rsvp/assets/icons/downarrow<?php
 													echo( ( ( $sort == 'attendee' ) && ( $sortDirection == 'desc' ) ) ? '_selected' : '' );
 													?>.gif" width="11" height="9"
 								alt="<?php echo esc_attr__('Sort Descending Attendee Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Descending Attendee Status', 'rsvp-plugin'); ?>" border="0"></a>
@@ -513,24 +516,24 @@ function rsvp_admin_guestlist() {
 					<!--<th scope="col" id="rsvpEmail" class="manage-column column-title"><?php echo __( 'Email', 'rsvp-plugin' ); ?></th>-->
 					<th scope="col" id="rsvpStatus" class="manage-column column-title" style=""><?php echo esc_html__( 'RSVP Status', 'rsvp-plugin' ); ?><br />
 						<a href="admin.php?page=rsvp-top-level&amp;sort=rsvpStatus&amp;sortDirection=asc">
-							<img src="<?php echo plugins_url(); ?>/rsvp/uparrow<?php
+							<img src="<?php echo plugins_url(); ?>/rsvp/aseets/icons/uparrow<?php
 													echo( ( ( $sort == 'rsvpStatus' ) && ( $sortDirection == 'asc' ) ) ? '_selected' : '' );
 													?>.gif" width="11" height="9"
 								alt="<?php echo esc_attr__('Sort Ascending RSVP Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Ascending RSVP Status', 'rsvp-plugin'); ?>" border="0"></a> &nbsp;
 						<a href="admin.php?page=rsvp-top-level&amp;sort=rsvpStatus&amp;sortDirection=desc">
-							<img src="<?php echo plugins_url(); ?>/rsvp/downarrow<?php
+							<img src="<?php echo plugins_url(); ?>/rsvp/assets/icons/downarrow<?php
 													echo( ( ( $sort == 'rsvpStatus' ) && ( $sortDirection == 'desc' ) ) ? '_selected' : '' );
 													?>.gif" width="11" height="9"
 								alt="<?php echo esc_attr__('Sort Descending RSVP Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Descending RSVP Status', 'rsvp-plugin'); ?>" border="0"></a>
 					</th>
 					<th scope="col" id="rsvpDate" class="manage-column column-title"><?php echo esc_html__( 'RSVP Date', 'rsvp-pro-plugin' ); ?><br />
 						<a href="admin.php?page=rsvp-top-level&amp;sort=rsvpDate&amp;sortDirection=asc">
-							<img src="<?php echo plugins_url(); ?>/rsvp/uparrow<?php
+							<img src="<?php echo plugins_url(); ?>/rsvp/aseets/icons/uparrow<?php
 													echo( ( ( $sort == 'rsvpDate' ) && ( $sortDirection == 'asc' ) ) ? '_selected' : '' );
 													?>.gif" width="11" height="9"
 								alt="<?php echo esc_attr__('Sort Ascending RSVP Date', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Ascending RSVP Date', 'rsvp-plugin'); ?>" border="0"></a> &nbsp;
 						<a href="admin.php?page=rsvp-top-level&amp;sort=rsvpDate&amp;sortDirection=desc">
-							<img src="<?php echo plugins_url(); ?>/rsvp/downarrow<?php
+							<img src="<?php echo plugins_url(); ?>/rsvp/assets/icons/downarrow<?php
 													echo( ( ( $sort == 'rsvpDate' ) && ( $sortDirection == 'desc' ) ) ? '_selected' : '' );
 													?>.gif" width="11" height="9"
 								alt="<?php echo esc_attr__('Sort Descending RSVP Date', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Descending RSVP Date', 'rsvp-plugin'); ?>" border="0"></a>
@@ -540,12 +543,12 @@ function rsvp_admin_guestlist() {
 						?>
 					<th scope="col" id="kidsMeal" class="manage-column column-title" style=""><?php echo esc_html__( 'Kids Meal', 'rsvp-plugin' ); ?><br />
 							<a href="admin.php?page=rsvp-top-level&amp;sort=kidsMeal&amp;sortDirection=asc">
-								<img src="<?php echo plugins_url(); ?>/rsvp/uparrow<?php
+								<img src="<?php echo plugins_url(); ?>/rsvp/aseets/icons/uparrow<?php
 														echo( ( ( $sort == 'kidsMeal' ) && ( $sortDirection == 'asc' ) ) ? '_selected' : '' );
 														?>.gif" width="11" height="9"
 									alt="<?php echo esc_attr__('Sort Ascending Kids Meal Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Ascending Kids Meal Status', 'rsvp-plugin'); ?>" border="0"></a> &nbsp;
 							<a href="admin.php?page=rsvp-top-level&amp;sort=kidsMeal&amp;sortDirection=desc">
-								<img src="<?php echo plugins_url(); ?>/rsvp/downarrow<?php
+								<img src="<?php echo plugins_url(); ?>/rsvp/assets/icons/downarrow<?php
 														echo( ( ( $sort == 'kidsMeal' ) && ( $sortDirection == 'desc' ) ) ? '_selected' : '' );
 														?>.gif" width="11" height="9"
 									alt="<?php echo esc_attr__('Sort Descending Kids Meal Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Descending Kids Meal Status', 'rsvp-plugin'); ?>" border="0"></a>
@@ -555,12 +558,12 @@ function rsvp_admin_guestlist() {
 					?>
 					<th scope="col" id="additionalAttendee" class="manage-column column-title" style=""><?php echo esc_html__( 'Additional Attendee', 'rsvp-plugin' ); ?> <br />
 								<a href="admin.php?page=rsvp-top-level&amp;sort=additional&amp;sortDirection=asc">
-									<img src="<?php echo plugins_url(); ?>/rsvp/uparrow<?php
+									<img src="<?php echo plugins_url(); ?>/rsvp/aseets/icons/uparrow<?php
 															echo( ( ( $sort == 'additional' ) && ( $sortDirection == 'asc' ) ) ? '_selected' : '' );
 															?>.gif" width="11" height="9"
 										alt="<?php echo esc_attr__('Sort Ascending Additional Attendees Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Ascending Additional Attendees Status', 'rsvp-plugin'); ?>" border="0"></a> &nbsp;
 								<a href="admin.php?page=rsvp-top-level&amp;sort=additional&amp;sortDirection=desc">
-									<img src="<?php echo plugins_url(); ?>/rsvp/downarrow<?php
+									<img src="<?php echo plugins_url(); ?>/rsvp/assets/icons/downarrow<?php
 															echo( ( ( $sort == 'additional' ) && ( $sortDirection == 'desc' ) ) ? '_selected' : '' );
 															?>.gif" width="11" height="9"
 										alt="<?php echo esc_attr__('Sort Descending Additional Attendees Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Descending Additional Attendees Status', 'rsvp-plugin'); ?>" border="0"></a>
@@ -570,12 +573,12 @@ function rsvp_admin_guestlist() {
 						?>
 					<th scope="col" id="veggieMeal" class="manage-column column-title" style=""><?php echo esc_html__( 'Vegetarian', 'rsvp-plugin' ); ?> <br />
 									<a href="admin.php?page=rsvp-top-level&amp;sort=vegetarian&amp;sortDirection=asc">
-										<img src="<?php echo plugins_url(); ?>/rsvp/uparrow<?php
+										<img src="<?php echo plugins_url(); ?>/rsvp/aseets/icons/uparrow<?php
 																echo( ( ( $sort == 'vegetarian' ) && ( $sortDirection == 'asc' ) ) ? '_selected' : '' );
 																?>.gif" width="11" height="9"
 											alt="<?php echo esc_attr__('Sort Ascending Vegetarian Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Ascending Vegetarian Status', 'rsvp-plugin'); ?>" border="0"></a> &nbsp;
 									<a href="admin.php?page=rsvp-top-level&amp;sort=vegetarian&amp;sortDirection=desc">
-										<img src="<?php echo plugins_url(); ?>/rsvp/downarrow<?php
+										<img src="<?php echo plugins_url(); ?>/rsvp/assets/icons/downarrow<?php
 																echo( ( ( $sort == 'vegetarian' ) && ( $sortDirection == 'desc' ) ) ? '_selected' : '' );
 																?>.gif" width="11" height="9"
 											alt="<?php echo esc_attr__('Sort Descending Vegetarian Status', 'rsvp-plugin'); ?>" title="<?php echo esc_attr__('Sort Descending Vegetarian Status', 'rsvp-plugin'); ?>" border="0"></a>
@@ -1926,7 +1929,7 @@ function rsvp_register_settings() {
 	register_setting( 'rsvp-option-group', RSVP_OPTION_DELETE_DATA_ON_UNINSTALL );
 	register_setting( 'rsvp-option-group', RSVP_OPTION_CSS_STYLING );
 
-	wp_register_script( 'jquery_table_sort', plugins_url( 'jquery.tablednd_0_5.js', RSVP_PLUGIN_FILE ) );
+	wp_register_script( 'jquery_table_sort', plugins_url( 'assets/js/jquery.tablednd_0_5.js', RSVP_PLUGIN_FILE ) );
 	wp_register_script( 'jquery_ui', ( is_ssl() ? 'https' : 'http' ) . '://ajax.microsoft.com/ajax/jquery.ui/1.8.5/jquery-ui.js' );
 	wp_register_style( 'jquery_ui_stylesheet', ( is_ssl() ? 'https' : 'http' ) . '://ajax.microsoft.com/ajax/jquery.ui/1.8.5/themes/redmond/jquery-ui.css' );
 }
@@ -1941,7 +1944,7 @@ function rsvp_admin_scripts() {
 	wp_register_style( 'jquery_multi_select_css', plugins_url( 'multi-select/css/multi-select.css', RSVP_PLUGIN_FILE ) );
 	wp_enqueue_style( 'jquery_multi_select_css' );
 
-	wp_register_script( 'rsvp_admin', plugins_url( 'rsvp_plugin_admin.js', RSVP_PLUGIN_FILE ) );
+	wp_register_script( 'rsvp_admin', plugins_url( 'assets/js/rsvp_plugin_admin.js', RSVP_PLUGIN_FILE ) );
 	wp_enqueue_script( 'rsvp_admin' );
 }
 
@@ -1950,8 +1953,8 @@ function rsvp_admin_scripts() {
  */
 function rsvp_init() {
 	$result = load_plugin_textdomain( 'rsvp-plugin', false, basename( dirname( __FILE__ ) ) . '/languages/' );
-	wp_register_script( 'jquery_validate', plugins_url( 'jquery.validate.min.js', RSVP_PLUGIN_FILE ), array( 'jquery' ) );
-	wp_register_script( 'rsvp_plugin', plugins_url( 'rsvp_plugin.js', RSVP_PLUGIN_FILE ), array( 'jquery' ) );
+	wp_register_script( 'jquery_validate', plugins_url( 'assets/js/jquery.validate.min.js', RSVP_PLUGIN_FILE ), array( 'jquery' ) );
+	wp_register_script( 'rsvp_plugin', plugins_url( 'assets/js/rsvp_plugin.js', RSVP_PLUGIN_FILE ), array( 'jquery' ) );
 	wp_localize_script(
 		'rsvp_plugin',
 		'rsvp_plugin_vars',
@@ -1972,7 +1975,7 @@ function rsvp_init() {
 		)
 	);
 
-	wp_register_style( 'rsvp_css', plugins_url( 'rsvp_plugin.css', RSVP_PLUGIN_FILE ) );
+	wp_register_style( 'assets/css/rsvp_css', plugins_url( 'rsvp_plugin.css', RSVP_PLUGIN_FILE ) );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'jquery_validate' );
 	wp_enqueue_script( 'rsvp_plugin' );
